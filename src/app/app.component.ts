@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  cameraActivated = false;
+
+  open(){
+    this.cameraActivated = true;
+  }
+
+  close(){
+    this.cameraActivated = false;
+  }
 }
