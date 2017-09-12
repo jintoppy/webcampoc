@@ -9,12 +9,18 @@ declare var Webcam: any;
 })
 export class WebcamComponent implements OnInit {
   cameraImg;
+  error=false;
+  errorMessage;
   @ViewChild('camera') cameraContainer;
   constructor() { }
 
   ngOnInit() {
     Webcam.set("swfURL", "/assets/webcam.swf");
     Webcam.attach(this.cameraContainer.nativeElement);
+    Webcam.on( 'error', (err) => {
+      this.error = true;
+      this.errorMessage = err;
+	  });
   }
 
   takePicture(){
